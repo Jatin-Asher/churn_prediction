@@ -1,0 +1,5 @@
+[ 2026-06-16 17:08:05,475 ] INFO root - Splitting data into train and test sets
+[ 2026-06-16 17:08:05,483 ] INFO root - Obtaining preprocessor object
+[ 2026-06-16 17:08:05,484 ] INFO root - Transforming train and test sets
+[ 2026-06-16 17:08:05,526 ] INFO root - Saving preprocessor object
+[ 2026-06-16 17:08:05,527 ] INFO root - Data transformation completed successfully
