@@ -1,0 +1,311 @@
+2026-06-29 22:47:52,571 - app.main - INFO - Starting Customer Churn Prediction API
+2026-06-29 22:47:52,572 - app.main - INFO - Project root resolved to: C:\Users\Asus\Desktop\churn_prediction
+2026-06-29 22:49:09,678 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2026-06-29 22:49:09,685 - httpx - INFO - HTTP Request: GET http://testserver/docs "HTTP/1.1 200 OK"
+2026-06-29 22:49:09,690 - httpx - INFO - HTTP Request: GET http://testserver/redoc "HTTP/1.1 200 OK"
+2026-06-29 22:49:09,699 - app.routes - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\Asus\Desktop\churn_prediction\app\routes.py", line 105, in predict_churn
+    from src.pipeline.prediction_pipeline import CustomData, PredictPipeline
+  File "C:\Users\Asus\Desktop\churn_prediction\src\pipeline\prediction_pipeline.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+2026-06-29 22:49:09,703 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 500 Internal Server Error"
+2026-06-29 22:51:45,319 - app.main - INFO - Starting Customer Churn Prediction API
+2026-06-29 22:51:45,320 - app.main - INFO - Project root resolved to: C:\Users\Asus\Desktop\churn_prediction
+2026-06-29 22:52:32,959 - app.main - ERROR - Unhandled error for GET /openapi.json
+Traceback (most recent call last):
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\pydantic\json_schema.py", line 336, in build_schema_type_to_method
+    mapping[key] = getattr(self, method_name)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'GenerateJsonSchema' object has no attribute 'invalid_schema'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\starlette\middleware\errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\starlette\middleware\cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\starlette\middleware\exceptions.py", line 79, in __call__
+    raise exc
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\starlette\middleware\exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 20, in __call__
+    raise e
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\starlette\routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\starlette\routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\starlette\routing.py", line 66, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\fastapi\applications.py", line 1061, in openapi
+    return JSONResponse(self.openapi())
+                        ^^^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\fastapi\applications.py", line 1033, in openapi
+    self.openapi_schema = get_openapi(
+                          ^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\fastapi\openapi\utils.py", line 474, in get_openapi
+    schema_generator = GenerateJsonSchema(ref_template=REF_TEMPLATE)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\pydantic\json_schema.py", line 293, in __init__
+    self._schema_type_to_method = self.build_schema_type_to_method()
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\pydantic\json_schema.py", line 338, in build_schema_type_to_method
+    raise TypeError(
+TypeError: No method for generating JsonSchema for core_schema.type='invalid' (expected: GenerateJsonSchema.invalid_schema)
+2026-06-29 22:58:56,039 - app.main - INFO - Starting Customer Churn Prediction API
+2026-06-29 22:58:56,040 - app.main - INFO - Project root resolved to: C:\Users\Asus\Desktop\churn_prediction
+2026-06-29 23:00:19,463 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2026-06-29 23:00:19,469 - httpx - INFO - HTTP Request: GET http://testserver/docs "HTTP/1.1 200 OK"
+2026-06-29 23:00:19,480 - httpx - INFO - HTTP Request: GET http://testserver/openapi.json "HTTP/1.1 200 OK"
+2026-06-29 23:00:19,484 - httpx - INFO - HTTP Request: GET http://testserver/predict "HTTP/1.1 405 Method Not Allowed"
+2026-06-29 23:00:19,492 - app.routes - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\Asus\Desktop\churn_prediction\app\routes.py", line 105, in predict_churn
+    from src.pipeline.prediction_pipeline import CustomData, PredictPipeline
+  File "C:\Users\Asus\Desktop\churn_prediction\src\pipeline\prediction_pipeline.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+2026-06-29 23:00:19,497 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 500 Internal Server Error"
+2026-06-29 23:05:47,858 - app.main - INFO - Starting Customer Churn Prediction API
+2026-06-29 23:05:47,858 - app.main - INFO - Project root resolved to: C:\Users\Asus\Desktop\churn_prediction
+2026-06-29 23:10:47,339 - app.main - INFO - Starting Customer Churn Prediction API
+2026-06-29 23:10:47,340 - app.main - INFO - Project root resolved to: C:\Users\Asus\Desktop\churn_prediction
+2026-06-29 23:14:20,990 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2026-06-29 23:14:20,996 - httpx - INFO - HTTP Request: GET http://testserver/ui "HTTP/1.1 200 OK"
+2026-06-29 23:14:21,001 - httpx - INFO - HTTP Request: GET http://testserver/interface "HTTP/1.1 200 OK"
+2026-06-29 23:14:21,006 - httpx - INFO - HTTP Request: GET http://testserver/ui "HTTP/1.1 200 OK"
+2026-06-29 23:14:21,014 - app.routes - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\Asus\Desktop\churn_prediction\app\routes.py", line 105, in predict_churn
+    from src.pipeline.prediction_pipeline import CustomData, PredictPipeline
+  File "C:\Users\Asus\Desktop\churn_prediction\src\pipeline\prediction_pipeline.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+2026-06-29 23:14:21,018 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 500 Internal Server Error"
+2026-06-29 23:17:13,792 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2026-06-29 23:17:13,797 - httpx - INFO - HTTP Request: GET http://testserver/ui "HTTP/1.1 200 OK"
+2026-06-29 23:17:13,802 - httpx - INFO - HTTP Request: GET http://testserver/interface "HTTP/1.1 200 OK"
+2026-06-29 23:19:00,878 - app.main - INFO - Starting Customer Churn Prediction API
+2026-06-29 23:19:00,879 - app.main - INFO - Project root resolved to: C:\Users\Asus\Desktop\churn_prediction
+2026-06-29 23:21:00,364 - app.main - INFO - Starting Customer Churn Prediction API
+2026-06-29 23:21:00,365 - app.main - INFO - Project root resolved to: C:\Users\Asus\Desktop\churn_prediction
+2026-06-30 10:09:26,415 - app.routes - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\Asus\Desktop\churn_prediction\app\routes.py", line 106, in predict_churn
+    from src.pipeline.prediction_pipeline import CustomData, PredictPipeline
+  File "C:\Users\Asus\Desktop\churn_prediction\src\pipeline\prediction_pipeline.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+2026-06-30 10:09:26,418 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 500 Internal Server Error"
+2026-06-30 10:13:55,208 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2026-06-30 10:13:55,213 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2026-06-30 10:13:55,220 - httpx - INFO - HTTP Request: GET http://testserver/docs "HTTP/1.1 200 OK"
+2026-06-30 10:13:55,235 - httpx - INFO - HTTP Request: GET http://testserver/openapi.json "HTTP/1.1 200 OK"
+2026-06-30 10:13:55,244 - app.routes - ERROR - Prediction dependency is missing
+Traceback (most recent call last):
+  File "C:\Users\Asus\Desktop\churn_prediction\app\routes.py", line 115, in predict_churn
+    from src.pipeline.prediction_pipeline import CustomData, PredictPipeline
+  File "C:\Users\Asus\Desktop\churn_prediction\src\pipeline\prediction_pipeline.py", line 5, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+2026-06-30 10:13:55,247 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 500 Internal Server Error"
+2026-06-30 10:15:50,130 - app.routes - INFO - Incoming prediction request: {'gender': 'Female', 'senior_citizen': 0, 'partner': 'Yes', 'dependents': 'No', 'tenure_months': 12, 'phone_service': 'Yes', 'multiple_lines': 'No', 'internet_service': 'Fiber optic', 'online_security': 'No', 'online_backup': 'Yes', 'device_protection': 'No', 'tech_support': 'No', 'streaming_tv': 'Yes', 'streaming_movies': 'Yes', 'contract': 'Month-to-month', 'paperless_billing': 'Yes', 'payment_method': 'Electronic check', 'monthly_charges': 85.7, 'total_charges': 1028.4, 'cltv': 3200.0}
+2026-06-30 10:15:50,131 - app.routes - INFO - Checking model artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\model.pkl
+2026-06-30 10:15:50,131 - app.routes - INFO - Checking preprocessor artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\preprocessor.pkl
+2026-06-30 10:15:50,131 - app.routes - INFO - Required artifacts found
+2026-06-30 10:15:50,134 - app.routes - ERROR - Prediction dependency is missing
+Traceback (most recent call last):
+  File "C:\Users\Asus\Desktop\churn_prediction\app\routes.py", line 120, in predict_churn
+    from src.pipeline.prediction_pipeline import CustomData, PredictPipeline
+  File "C:\Users\Asus\Desktop\churn_prediction\src\pipeline\prediction_pipeline.py", line 5, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+2026-06-30 10:15:50,137 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 500 Internal Server Error"
+2026-06-30 10:16:15,909 - app.main - INFO - Starting Customer Churn Prediction API
+2026-06-30 10:16:15,910 - app.main - INFO - Project root resolved to: C:\Users\Asus\Desktop\churn_prediction
+2026-06-30 10:17:17,338 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2026-06-30 10:17:17,343 - httpx - INFO - HTTP Request: GET http://testserver/docs "HTTP/1.1 200 OK"
+2026-06-30 10:17:17,357 - httpx - INFO - HTTP Request: GET http://testserver/openapi.json "HTTP/1.1 200 OK"
+2026-06-30 10:17:17,362 - app.routes - INFO - Incoming prediction request: {'gender': 'Female', 'senior_citizen': 0, 'partner': 'Yes', 'dependents': 'No', 'tenure_months': 12, 'phone_service': 'Yes', 'multiple_lines': 'No', 'internet_service': 'Fiber optic', 'online_security': 'No', 'online_backup': 'Yes', 'device_protection': 'No', 'tech_support': 'No', 'streaming_tv': 'Yes', 'streaming_movies': 'Yes', 'contract': 'Month-to-month', 'paperless_billing': 'Yes', 'payment_method': 'Electronic check', 'monthly_charges': 85.7, 'total_charges': 1028.4, 'cltv': 3200.0}
+2026-06-30 10:17:17,362 - app.routes - INFO - Checking model artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\model.pkl
+2026-06-30 10:17:17,362 - app.routes - INFO - Checking preprocessor artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\preprocessor.pkl
+2026-06-30 10:17:17,362 - app.routes - INFO - Required artifacts found
+2026-06-30 10:17:17,366 - app.routes - ERROR - Prediction dependency is missing
+Traceback (most recent call last):
+  File "C:\Users\Asus\Desktop\churn_prediction\app\routes.py", line 120, in predict_churn
+    from src.pipeline.prediction_pipeline import CustomData, PredictPipeline
+  File "C:\Users\Asus\Desktop\churn_prediction\src\pipeline\prediction_pipeline.py", line 5, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+2026-06-30 10:17:17,370 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 500 Internal Server Error"
+2026-06-30 10:21:00,087 - app.main - INFO - Starting Customer Churn Prediction API
+2026-06-30 10:21:00,087 - app.main - INFO - Project root resolved to: C:\Users\Asus\Desktop\churn_prediction
+2026-06-30 10:22:38,740 - app.main - INFO - Starting Customer Churn Prediction API
+2026-06-30 10:22:38,741 - app.main - INFO - Project root resolved to: C:\Users\Asus\Desktop\churn_prediction
+2026-06-30 10:26:03,102 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2026-06-30 10:26:03,107 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2026-06-30 10:26:03,111 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2026-06-30 10:28:11,101 - httpx - INFO - HTTP Request: GET http://testserver/ "HTTP/1.1 200 OK"
+2026-06-30 10:28:11,105 - app.routes - INFO - Incoming prediction request: {'gender': 'Female', 'senior_citizen': 0, 'partner': 'Yes', 'dependents': 'No', 'tenure_months': 12, 'phone_service': 'Yes', 'multiple_lines': 'No', 'internet_service': 'Fiber optic', 'online_security': 'No', 'online_backup': 'Yes', 'device_protection': 'No', 'tech_support': 'No', 'streaming_tv': 'Yes', 'streaming_movies': 'Yes', 'contract': 'Month-to-month', 'paperless_billing': 'Yes', 'payment_method': 'Electronic check', 'monthly_charges': 85.7, 'total_charges': 1028.4, 'cltv': 3200.0}
+2026-06-30 10:28:11,105 - app.routes - INFO - Checking model artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\model.pkl
+2026-06-30 10:28:11,105 - app.routes - INFO - Checking preprocessor artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\preprocessor.pkl
+2026-06-30 10:28:11,105 - app.routes - INFO - Required artifacts found
+2026-06-30 10:28:11,108 - app.routes - ERROR - Prediction dependency is missing
+Traceback (most recent call last):
+  File "C:\Users\Asus\Desktop\churn_prediction\app\routes.py", line 120, in predict_churn
+    from src.pipeline.prediction_pipeline import CustomData, PredictPipeline
+  File "C:\Users\Asus\Desktop\churn_prediction\src\pipeline\prediction_pipeline.py", line 5, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+2026-06-30 10:28:11,110 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 500 Internal Server Error"
+2026-06-30 10:28:11,114 - app.main - WARNING - Validation error for POST /predict: [{'type': 'missing', 'loc': ('body', 'gender'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'senior_citizen'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'partner'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'dependents'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'tenure_months'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'phone_service'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'multiple_lines'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'internet_service'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'online_security'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'online_backup'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'device_protection'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'tech_support'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'streaming_tv'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'streaming_movies'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'contract'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'paperless_billing'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'payment_method'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'monthly_charges'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'total_charges'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}, {'type': 'missing', 'loc': ('body', 'cltv'), 'msg': 'Field required', 'input': {}, 'url': 'https://errors.pydantic.dev/2.13/v/missing'}]
+2026-06-30 10:28:11,116 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 422 Unprocessable Entity"
+2026-06-30 10:34:00,484 - app.main - INFO - Starting Customer Churn Prediction API
+2026-06-30 10:34:00,484 - app.main - INFO - Project root resolved to: C:\Users\Asus\Desktop\churn_prediction
+2026-06-30 10:34:36,879 - app.routes - INFO - Incoming prediction request: {'gender': 'Female', 'senior_citizen': 0, 'partner': 'Yes', 'dependents': 'No', 'tenure_months': 12, 'phone_service': 'Yes', 'multiple_lines': 'No', 'internet_service': 'Fiber optic', 'online_security': 'No', 'online_backup': 'Yes', 'device_protection': 'No', 'tech_support': 'No', 'streaming_tv': 'Yes', 'streaming_movies': 'Yes', 'contract': 'Month-to-month', 'paperless_billing': 'Yes', 'payment_method': 'Electronic check', 'monthly_charges': 85.7, 'total_charges': 1028.4, 'cltv': 3200.0}
+2026-06-30 10:34:36,880 - app.routes - INFO - Checking model artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\model.pkl
+2026-06-30 10:34:36,881 - app.routes - INFO - Checking preprocessor artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\preprocessor.pkl
+2026-06-30 10:34:36,881 - app.routes - INFO - Required artifacts found
+2026-06-30 10:34:37,997 - src.pipeline.prediction_pipeline - INFO - Created CustomData DataFrame columns: ['Gender', 'Senior Citizen', 'Partner', 'Dependents', 'Tenure Months', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method', 'Monthly Charges', 'Total Charges', 'CLTV']
+2026-06-30 10:34:37,997 - src.pipeline.prediction_pipeline - INFO - Created CustomData DataFrame shape: (1, 20)
+2026-06-30 10:34:37,998 - app.routes - INFO - Input DataFrame columns: ['Gender', 'Senior Citizen', 'Partner', 'Dependents', 'Tenure Months', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method', 'Monthly Charges', 'Total Charges', 'CLTV']
+2026-06-30 10:34:37,998 - app.routes - INFO - Input DataFrame shape: (1, 20)
+2026-06-30 10:34:37,998 - src.pipeline.prediction_pipeline - INFO - Starting prediction pipeline
+2026-06-30 10:34:37,998 - src.pipeline.prediction_pipeline - INFO - Prediction input DataFrame columns: ['Gender', 'Senior Citizen', 'Partner', 'Dependents', 'Tenure Months', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method', 'Monthly Charges', 'Total Charges', 'CLTV']
+2026-06-30 10:34:37,999 - src.pipeline.prediction_pipeline - INFO - Prediction input DataFrame shape: (1, 20)
+2026-06-30 10:34:37,999 - src.pipeline.prediction_pipeline - INFO - Loading model from: C:\Users\Asus\Desktop\churn_prediction\artifacts\model.pkl
+2026-06-30 10:34:41,002 - src.pipeline.prediction_pipeline - INFO - Model loaded successfully: RandomForestClassifier
+2026-06-30 10:34:41,003 - src.pipeline.prediction_pipeline - INFO - Loading preprocessor from: C:\Users\Asus\Desktop\churn_prediction\artifacts\preprocessor.pkl
+2026-06-30 10:34:41,012 - src.pipeline.prediction_pipeline - INFO - Preprocessor loaded successfully: ColumnTransformer
+2026-06-30 10:34:41,013 - src.pipeline.prediction_pipeline - INFO - Preprocessor expected raw columns: ['Country', 'State', 'City', 'Zip Code', 'Latitude', 'Longitude', 'Gender', 'Senior Citizen', 'Partner', 'Dependents', 'Tenure Months', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method', 'Monthly Charges', 'Total Charges', 'Churn Label', 'CLTV', 'LongTermCustomer', 'ServicesCount', 'AvgRevenue']
+2026-06-30 10:34:41,018 - app.routes - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\Asus\Desktop\churn_prediction\app\routes.py", line 129, in predict_churn
+    prediction, probability = prediction_pipeline.predict(input_dataframe)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\Desktop\churn_prediction\src\pipeline\prediction_pipeline.py", line 71, in predict
+    raise ValueError(
+ValueError: Input DataFrame is missing required column(s): ['Country', 'State', 'City', 'Zip Code', 'Latitude', 'Longitude', 'Churn Label', 'LongTermCustomer', 'ServicesCount', 'AvgRevenue']. Received columns: ['Gender', 'Senior Citizen', 'Partner', 'Dependents', 'Tenure Months', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method', 'Monthly Charges', 'Total Charges', 'CLTV']
+2026-06-30 10:39:00,966 - app.main - INFO - Starting Customer Churn Prediction API
+2026-06-30 10:39:00,967 - app.main - INFO - Project root resolved to: C:\Users\Asus\Desktop\churn_prediction
+2026-06-30 10:39:27,582 - app.routes - INFO - Incoming prediction request: {'gender': 'Female', 'senior_citizen': 0, 'partner': 'Yes', 'dependents': 'No', 'tenure_months': 12, 'phone_service': 'Yes', 'multiple_lines': 'No', 'internet_service': 'Fiber optic', 'online_security': 'No', 'online_backup': 'Yes', 'device_protection': 'No', 'tech_support': 'No', 'streaming_tv': 'Yes', 'streaming_movies': 'Yes', 'contract': 'Month-to-month', 'paperless_billing': 'Yes', 'payment_method': 'Electronic check', 'monthly_charges': 85.7, 'total_charges': 1028.4, 'cltv': 3200.0}
+2026-06-30 10:39:27,583 - app.routes - INFO - Checking model artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\model.pkl
+2026-06-30 10:39:27,583 - app.routes - INFO - Checking preprocessor artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\preprocessor.pkl
+2026-06-30 10:39:27,583 - app.routes - INFO - Required artifacts found
+2026-06-30 10:39:27,591 - app.routes - ERROR - Prediction dependency is missing
+Traceback (most recent call last):
+  File "C:\Users\Asus\Desktop\churn_prediction\app\routes.py", line 123, in predict_churn
+    input_dataframe = custom_data.get_data_as_dataframe()
+  File "C:\Users\Asus\Desktop\churn_prediction\src\pipeline\prediction_pipeline.py", line 216, in get_data_as_dataframe
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+2026-06-30 10:39:27,594 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 500 Internal Server Error"
+2026-06-30 10:44:00,304 - app.main - INFO - Starting Customer Churn Prediction API
+2026-06-30 10:44:00,304 - app.main - INFO - Project root resolved to: C:\Users\Asus\Desktop\churn_prediction
+2026-06-30 15:23:58,318 - app.routes - INFO - Incoming prediction request: {'gender': 'Female', 'senior_citizen': 0, 'partner': 'Yes', 'dependents': 'No', 'tenure_months': 12, 'phone_service': 'Yes', 'multiple_lines': 'No', 'internet_service': 'Fiber optic', 'online_security': 'No', 'online_backup': 'Yes', 'device_protection': 'No', 'tech_support': 'No', 'streaming_tv': 'Yes', 'streaming_movies': 'Yes', 'contract': 'Month-to-month', 'paperless_billing': 'Yes', 'payment_method': 'Electronic check', 'monthly_charges': 85.7, 'total_charges': 1028.4, 'cltv': 3200.0}
+2026-06-30 15:23:58,319 - app.routes - INFO - Checking model artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\model.pkl
+2026-06-30 15:23:58,319 - app.routes - INFO - Checking preprocessor artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\preprocessor.pkl
+2026-06-30 15:23:58,320 - app.routes - INFO - Required artifacts found
+2026-06-30 15:23:59,894 - src.pipeline.prediction_pipeline - INFO - Created CustomData DataFrame columns: ['Gender', 'Senior Citizen', 'Partner', 'Dependents', 'Tenure Months', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method', 'Monthly Charges', 'Total Charges', 'CLTV']
+2026-06-30 15:23:59,894 - src.pipeline.prediction_pipeline - INFO - Created CustomData DataFrame shape: (1, 20)
+2026-06-30 15:23:59,895 - app.routes - INFO - Input DataFrame columns: ['Gender', 'Senior Citizen', 'Partner', 'Dependents', 'Tenure Months', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method', 'Monthly Charges', 'Total Charges', 'CLTV']
+2026-06-30 15:23:59,895 - app.routes - INFO - Input DataFrame shape: (1, 20)
+2026-06-30 15:23:59,896 - src.pipeline.prediction_pipeline - INFO - Starting prediction pipeline
+2026-06-30 15:23:59,896 - src.pipeline.prediction_pipeline - INFO - Prediction input DataFrame columns: ['Gender', 'Senior Citizen', 'Partner', 'Dependents', 'Tenure Months', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method', 'Monthly Charges', 'Total Charges', 'CLTV']
+2026-06-30 15:23:59,896 - src.pipeline.prediction_pipeline - INFO - Prediction input DataFrame shape: (1, 20)
+2026-06-30 15:23:59,897 - src.pipeline.prediction_pipeline - INFO - Loading model from: C:\Users\Asus\Desktop\churn_prediction\artifacts\model.pkl
+2026-06-30 15:24:04,280 - src.pipeline.prediction_pipeline - INFO - Model loaded successfully: RandomForestClassifier
+2026-06-30 15:24:04,281 - src.pipeline.prediction_pipeline - INFO - Loading preprocessor from: C:\Users\Asus\Desktop\churn_prediction\artifacts\preprocessor.pkl
+2026-06-30 15:24:04,297 - src.pipeline.prediction_pipeline - INFO - Preprocessor loaded successfully: ColumnTransformer
+2026-06-30 15:24:04,298 - src.pipeline.prediction_pipeline - INFO - Preprocessor required raw columns: ['Tenure Months', 'Monthly Charges', 'Total Charges', 'CLTV', 'Gender', 'Partner', 'Dependents', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method']
+2026-06-30 15:24:04,307 - src.pipeline.prediction_pipeline - WARNING - Input DataFrame contains extra column(s) not used by preprocessor: ['Senior Citizen']
+2026-06-30 15:24:04,315 - src.pipeline.prediction_pipeline - INFO - Input DataFrame reordered to expected columns
+2026-06-30 15:24:04,397 - app.routes - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\Asus\Desktop\churn_prediction\app\routes.py", line 129, in predict_churn
+    prediction, probability = prediction_pipeline.predict(input_dataframe)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\Desktop\churn_prediction\src\pipeline\prediction_pipeline.py", line 128, in predict
+    data_scaled = preprocessor.transform(
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\sklearn\utils\_set_output.py", line 319, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\sklearn\compose\_column_transformer.py", line 1079, in transform
+    Xs = self._call_func_on_transformers(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\sklearn\compose\_column_transformer.py", line 889, in _call_func_on_transformers
+    return Parallel(n_jobs=self.n_jobs)(jobs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\sklearn\utils\parallel.py", line 91, in __call__
+    return super().__call__(iterable_with_config_and_warning_filters)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\joblib\parallel.py", line 1986, in __call__
+    return output if self.return_generator else list(output)
+                                                ^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\joblib\parallel.py", line 1914, in _get_sequential_output
+    res = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\sklearn\utils\parallel.py", line 184, in __call__
+    return self.function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\sklearn\pipeline.py", line 1546, in _transform_one
+    res = transformer.transform(X, **params.transform)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\sklearn\pipeline.py", line 1110, in transform
+    Xt = transform.transform(Xt, **routed_params[name].transform)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\sklearn\utils\_set_output.py", line 319, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\anaconda3\Lib\site-packages\sklearn\impute\_base.py", line 638, in transform
+    self._fill_dtype, copy=False
+    ^^^^^^^^^^^^^^^^
+AttributeError: 'SimpleImputer' object has no attribute '_fill_dtype'. Did you mean: '_fit_dtype'?
+2026-06-30 15:25:03,572 - app.routes - INFO - Incoming prediction request: {'gender': 'Female', 'senior_citizen': 0, 'partner': 'Yes', 'dependents': 'No', 'tenure_months': 12, 'phone_service': 'Yes', 'multiple_lines': 'No', 'internet_service': 'Fiber optic', 'online_security': 'No', 'online_backup': 'Yes', 'device_protection': 'No', 'tech_support': 'No', 'streaming_tv': 'Yes', 'streaming_movies': 'Yes', 'contract': 'Month-to-month', 'paperless_billing': 'Yes', 'payment_method': 'Electronic check', 'monthly_charges': 85.7, 'total_charges': 1028.4, 'cltv': 3200.0}
+2026-06-30 15:25:03,572 - app.routes - INFO - Checking model artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\model.pkl
+2026-06-30 15:25:03,573 - app.routes - INFO - Checking preprocessor artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\preprocessor.pkl
+2026-06-30 15:25:03,573 - app.routes - INFO - Required artifacts found
+2026-06-30 15:25:03,584 - app.routes - ERROR - Prediction dependency is missing
+Traceback (most recent call last):
+  File "C:\Users\Asus\Desktop\churn_prediction\app\routes.py", line 123, in predict_churn
+    input_dataframe = custom_data.get_data_as_dataframe()
+  File "C:\Users\Asus\Desktop\churn_prediction\src\pipeline\prediction_pipeline.py", line 216, in get_data_as_dataframe
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+2026-06-30 15:25:03,588 - httpx - INFO - HTTP Request: POST http://testserver/predict "HTTP/1.1 500 Internal Server Error"
+2026-06-30 15:29:19,638 - app.main - INFO - Starting Customer Churn Prediction API
+2026-06-30 15:29:19,638 - app.main - INFO - Project root resolved to: C:\Users\Asus\Desktop\churn_prediction
+2026-06-30 15:34:54,695 - app.routes - INFO - Incoming prediction request: {'gender': 'Female', 'senior_citizen': 0, 'partner': 'Yes', 'dependents': 'No', 'tenure_months': 12, 'phone_service': 'Yes', 'multiple_lines': 'No', 'internet_service': 'Fiber optic', 'online_security': 'No', 'online_backup': 'Yes', 'device_protection': 'No', 'tech_support': 'No', 'streaming_tv': 'Yes', 'streaming_movies': 'Yes', 'contract': 'Month-to-month', 'paperless_billing': 'Yes', 'payment_method': 'Electronic check', 'monthly_charges': 85.7, 'total_charges': 1028.4, 'cltv': 3200.0}
+2026-06-30 15:34:54,696 - app.routes - INFO - Checking model artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\model.pkl
+2026-06-30 15:34:54,696 - app.routes - INFO - Checking preprocessor artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\preprocessor.pkl
+2026-06-30 15:34:54,696 - app.routes - INFO - Required artifacts found
+2026-06-30 15:34:55,464 - src.pipeline.prediction_pipeline - INFO - Created CustomData DataFrame columns: ['Gender', 'Senior Citizen', 'Partner', 'Dependents', 'Tenure Months', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method', 'Monthly Charges', 'Total Charges', 'CLTV']
+2026-06-30 15:34:55,465 - src.pipeline.prediction_pipeline - INFO - Created CustomData DataFrame shape: (1, 20)
+2026-06-30 15:34:55,465 - app.routes - INFO - Input DataFrame columns: ['Gender', 'Senior Citizen', 'Partner', 'Dependents', 'Tenure Months', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method', 'Monthly Charges', 'Total Charges', 'CLTV']
+2026-06-30 15:34:55,465 - app.routes - INFO - Input DataFrame shape: (1, 20)
+2026-06-30 15:34:55,465 - src.pipeline.prediction_pipeline - INFO - Starting prediction pipeline
+2026-06-30 15:34:55,465 - src.pipeline.prediction_pipeline - INFO - Prediction input DataFrame columns: ['Gender', 'Senior Citizen', 'Partner', 'Dependents', 'Tenure Months', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method', 'Monthly Charges', 'Total Charges', 'CLTV']
+2026-06-30 15:34:55,465 - src.pipeline.prediction_pipeline - INFO - Prediction input DataFrame shape: (1, 20)
+2026-06-30 15:34:55,466 - src.pipeline.prediction_pipeline - INFO - Loading model from: C:\Users\Asus\Desktop\churn_prediction\artifacts\model.pkl
+2026-06-30 15:34:57,625 - src.pipeline.prediction_pipeline - INFO - Model loaded successfully: RandomForestClassifier
+2026-06-30 15:34:57,626 - src.pipeline.prediction_pipeline - INFO - Loading preprocessor from: C:\Users\Asus\Desktop\churn_prediction\artifacts\preprocessor.pkl
+2026-06-30 15:34:57,634 - app.routes - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\Asus\Desktop\churn_prediction\app\routes.py", line 129, in predict_churn
+    prediction, probability = prediction_pipeline.predict(input_dataframe)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\Desktop\churn_prediction\src\pipeline\prediction_pipeline.py", line 156, in predict
+    preprocessor = patch_sklearn_artifact_compatibility(preprocessor)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\Desktop\churn_prediction\src\pipeline\prediction_pipeline.py", line 106, in patch_sklearn_artifact_compatibility
+    for nested_estimator in iter_estimator_tree(estimator):
+  File "C:\Users\Asus\Desktop\churn_prediction\src\pipeline\prediction_pipeline.py", line 77, in iter_estimator_tree
+    for _, _, transformer in getattr(estimator, "_iter", lambda: [])():
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ColumnTransformer._iter() missing 4 required positional arguments: 'fitted', 'column_as_labels', 'skip_drop', and 'skip_empty_columns'

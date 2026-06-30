@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Churn Prediction Interface</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --panel: #111827;
+            --panel-soft: #1f2937;
+            --card: #ffffff;
+            --muted: #64748b;
+            --text: #0f172a;
+            --text-light: #e5e7eb;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #16a34a;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --border: #e2e8f0;
+            --shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 48%, #e0f2fe 100%);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .hero {
+            color: var(--text-light);
+            padding: 48px 24px 30px;
+        }
+
+        .hero-inner,
+        .shell {
+            width: min(1180px, 100%);
+            margin: 0 auto;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            color: #bfdbfe;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 20px 0 12px;
+            font-size: clamp(34px, 5vw, 60px);
+            line-height: 1.02;
+            max-width: 870px;
+        }
+
+        .subtitle {
+            margin: 0;
+            color: #dbeafe;
+            max-width: 760px;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .link-button,
+        button {
+            border: 0;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+        }
+
+        .link-button:hover,
+        button:hover {
+            transform: translateY(-1px);
+        }
+
+        .primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.34);
+        }
+
+        .primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .secondary {
+            background: rgba(255, 255, 255, 0.14);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+        }
+
+        .shell {
+            padding: 0 24px 44px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1.45fr 0.9fr;
+            gap: 22px;
+            align-items: start;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 22px 24px;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        }
+
+        .card-header h2,
+        .card-header h3 {
+            margin: 0;
+        }
+
+        .card-header p {
+            margin: 7px 0 0;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 17px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 800;
+            color: #334155;
+        }
+
+        input,
+        select {
+            width: 100%;
+            border: 1px solid #cbd5e1;
+            border-radius: 11px;
+            padding: 12px 13px;
+            background: #ffffff;
+            color: #0f172a;
+            font-size: 15px;
+            outline: none;
+            transition: border 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.13);
+        }
+
+        .form-actions {
+            grid-column: 1 / -1;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding-top: 8px;
+        }
+
+        .ghost {
+            background: #eef2ff;
+            color: #1e3a8a;
+        }
+
+        .status-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .metric {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 15px;
+        }
+
+        .metric .label {
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .metric .value {
+            margin-top: 7px;
+            font-size: 18px;
+            font-weight: 900;
+            overflow-wrap: anywhere;
+        }
+
+        .result-card {
+            border-radius: 18px;
+            padding: 22px;
+            color: white;
+            background: linear-gradient(135deg, #334155, #0f172a);
+            margin-bottom: 18px;
+        }
+
+        .result-card.low {
+            background: linear-gradient(135deg, #16a34a, #14532d);
+        }
+
+        .result-card.medium {
+            background: linear-gradient(135deg, #d97706, #7c2d12);
+        }
+
+        .result-card.high {
+            background: linear-gradient(135deg, #dc2626, #7f1d1d);
+        }
+
+        .result-title {
+            margin: 0 0 8px;
+            color: #e0f2fe;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .result-main {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .probability {
+            font-size: 44px;
+            font-weight: 950;
+            line-height: 1;
+        }
+
+        .risk {
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .result-note {
+            margin: 12px 0 0;
+            color: #dbeafe;
+            line-height: 1.5;
+        }
+
+        .alert {
+            display: none;
+            padding: 14px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border: 1px solid transparent;
+            line-height: 1.5;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert.error {
+            background: #fef2f2;
+            border-color: #fecaca;
+            color: #991b1b;
+        }
+
+        .alert.success {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+            color: #166534;
+        }
+
+        .code-panel {
+            background: #020617;
+            color: #dbeafe;
+            border-radius: 14px;
+            padding: 16px;
+            overflow-x: auto;
+            font-family: "Cascadia Code", Consolas, monospace;
+            font-size: 12px;
+            line-height: 1.55;
+            white-space: pre-wrap;
+            min-height: 80px;
+        }
+
+        .stack {
+            display: grid;
+            gap: 22px;
+        }
+
+        .small-text {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        @media (max-width: 960px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .hero {
+                padding-top: 32px;
+            }
+
+            form,
+            .status-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-inner">
+            <div class="eyebrow">ML System Interface</div>
+            <h1>Customer Churn Prediction</h1>
+            <p class="subtitle">
+                Use this interface to interact with the whole FastAPI system, check model health,
+                submit customer details to the prediction API, and inspect the exact JSON request and response.
+            </p>
+            <div class="hero-actions">
+                <a class="link-button primary" href="#prediction-form">Open Prediction Form</a>
+                <a class="link-button secondary" href="/docs" target="_blank" rel="noreferrer">Swagger Docs</a>
+                <a class="link-button secondary" href="/redoc" target="_blank" rel="noreferrer">ReDoc</a>
+                <a class="link-button secondary" href="/" target="_blank" rel="noreferrer">System Health JSON</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="shell">
+        <div class="grid">
+            <section class="card">
+                <div class="card-header">
+                    <h2>Predict Churn</h2>
+                    <p>Fill in the customer profile and submit it to <strong>POST /predict</strong>.</p>
+                </div>
+                <div class="card-body">
+                    <div id="message" class="alert"></div>
+                    <form id="prediction-form">
+                        <div class="field">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender" required>
+                                <option>Female</option>
+                                <option>Male</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="senior_citizen">Senior Citizen</label>
+                            <select id="senior_citizen" name="senior_citizen" required>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="partner">Partner</label>
+                            <select id="partner" name="partner" required>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="dependents">Dependents</label>
+                            <select id="dependents" name="dependents" required>
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="tenure_months">Tenure Months</label>
+                            <input id="tenure_months" name="tenure_months" type="number" min="0" step="1" value="12" required />
+                        </div>
+
+                        <div class="field">
+                            <label for="phone_service">Phone Service</label>
+                            <select id="phone_service" name="phone_service" required>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="multiple_lines">Multiple Lines</label>
+                            <select id="multiple_lines" name="multiple_lines" required>
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>No phone service</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="internet_service">Internet Service</label>
+                            <select id="internet_service" name="internet_service" required>
+                                <option>Fiber optic</option>
+                                <option>DSL</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="online_security">Online Security</label>
+                            <select id="online_security" name="online_security" required>
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>No internet service</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="online_backup">Online Backup</label>
+                            <select id="online_backup" name="online_backup" required>
+                                <option>Yes</option>
+                                <option>No</option>
+                                <option>No internet service</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="device_protection">Device Protection</label>
+                            <select id="device_protection" name="device_protection" required>
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>No internet service</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="tech_support">Tech Support</label>
+                            <select id="tech_support" name="tech_support" required>
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>No internet service</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="streaming_tv">Streaming TV</label>
+                            <select id="streaming_tv" name="streaming_tv" required>
+                                <option>Yes</option>
+                                <option>No</option>
+                                <option>No internet service</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="streaming_movies">Streaming Movies</label>
+                            <select id="streaming_movies" name="streaming_movies" required>
+                                <option>Yes</option>
+                                <option>No</option>
+                                <option>No internet service</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="contract">Contract</label>
+                            <select id="contract" name="contract" required>
+                                <option>Month-to-month</option>
+                                <option>One year</option>
+                                <option>Two year</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="paperless_billing">Paperless Billing</label>
+                            <select id="paperless_billing" name="paperless_billing" required>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+
+                        <div class="field full">
+                            <label for="payment_method">Payment Method</label>
+                            <select id="payment_method" name="payment_method" required>
+                                <option>Electronic check</option>
+                                <option>Mailed check</option>
+                                <option>Bank transfer (automatic)</option>
+                                <option>Credit card (automatic)</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="monthly_charges">Monthly Charges</label>
+                            <input id="monthly_charges" name="monthly_charges" type="number" min="0" step="0.01" value="85.70" required />
+                        </div>
+
+                        <div class="field">
+                            <label for="total_charges">Total Charges</label>
+                            <input id="total_charges" name="total_charges" type="number" min="0" step="0.01" value="1028.40" required />
+                        </div>
+
+                        <div class="field">
+                            <label for="cltv">Customer Lifetime Value</label>
+                            <input id="cltv" name="cltv" type="number" min="0" step="0.01" value="3200.00" required />
+                        </div>
+
+                        <div class="form-actions">
+                            <button id="submit-button" class="primary" type="submit">Predict Customer Churn</button>
+                            <button id="sample-button" class="ghost" type="button">Load Sample</button>
+                            <button id="clear-button" class="ghost" type="button">Clear Result</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <aside class="stack">
+                <section class="card">
+                    <div class="card-header">
+                        <h3>System Status</h3>
+                        <p>Data is loaded from <strong>GET /</strong>.</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="status-row">
+                            <div class="metric">
+                                <div class="label">API Status</div>
+                                <div id="api-status" class="value">Checking...</div>
+                            </div>
+                            <div class="metric">
+                                <div class="label">Version</div>
+                                <div id="api-version" class="value">-</div>
+                            </div>
+                        </div>
+                        <p id="artifact-status" class="small-text">Checking model artifacts...</p>
+                        <button id="refresh-health" class="ghost" type="button">Refresh System Status</button>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="card-header">
+                        <h3>Prediction Result</h3>
+                        <p>Probability and risk label returned by the model.</p>
+                    </div>
+                    <div class="card-body">
+                        <div id="result-card" class="result-card">
+                            <p class="result-title">Waiting for prediction</p>
+                            <div class="result-main">
+                                <span id="probability" class="probability">--%</span>
+                                <span id="risk" class="risk">No result</span>
+                            </div>
+                            <p id="result-note" class="result-note">Submit the form to call the prediction API.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="card-header">
+                        <h3>API Payload</h3>
+                        <p>Request body sent to <strong>/predict</strong>.</p>
+                    </div>
+                    <div class="card-body">
+                        <pre id="request-json" class="code-panel">{}</pre>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="card-header">
+                        <h3>API Response</h3>
+                        <p>Raw response from the backend.</p>
+                    </div>
+                    <div class="card-body">
+                        <pre id="response-json" class="code-panel">No response yet.</pre>
+                    </div>
+                </section>
+            </aside>
+        </div>
+    </main>
+
+    <script>
+        const numericFields = new Set([
+            "senior_citizen",
+            "tenure_months",
+            "monthly_charges",
+            "total_charges",
+            "cltv",
+        ]);
+
+        const samplePayload = {
+            gender: "Female",
+            senior_citizen: 0,
+            partner: "Yes",
+            dependents: "No",
+            tenure_months: 12,
+            phone_service: "Yes",
+            multiple_lines: "No",
+            internet_service: "Fiber optic",
+            online_security: "No",
+            online_backup: "Yes",
+            device_protection: "No",
+            tech_support: "No",
+            streaming_tv: "Yes",
+            streaming_movies: "Yes",
+            contract: "Month-to-month",
+            paperless_billing: "Yes",
+            payment_method: "Electronic check",
+            monthly_charges: 85.7,
+            total_charges: 1028.4,
+            cltv: 3200.0,
+        };
+
+        const form = document.getElementById("prediction-form");
+        const submitButton = document.getElementById("submit-button");
+        const message = document.getElementById("message");
+        const requestJson = document.getElementById("request-json");
+        const responseJson = document.getElementById("response-json");
+        const resultCard = document.getElementById("result-card");
+        const probability = document.getElementById("probability");
+        const risk = document.getElementById("risk");
+        const resultNote = document.getElementById("result-note");
+        let apiBaseUrl = null;
+
+        function showMessage(type, text) {
+            message.className = `alert ${type} show`;
+            message.textContent = text;
+        }
+
+        function hideMessage() {
+            message.className = "alert";
+            message.textContent = "";
+        }
+
+        function formatJson(data) {
+            return JSON.stringify(data, null, 2);
+        }
+
+        async function parseApiResponse(response) {
+            const contentType = response.headers.get("content-type") || "";
+            const rawBody = await response.text();
+
+            if (!rawBody.trim()) {
+                return {
+                    data: null,
+                    rawBody,
+                    isJson: false,
+                    errorMessage: `The API returned an empty response with HTTP ${response.status}. Check the FastAPI server logs.`,
+                };
+            }
+
+            if (contentType.includes("application/json")) {
+                try {
+                    return {
+                        data: JSON.parse(rawBody),
+                        rawBody,
+                        isJson: true,
+                        errorMessage: null,
+                    };
+                } catch (error) {
+                    return {
+                        data: null,
+                        rawBody,
+                        isJson: false,
+                        errorMessage: `The API returned invalid JSON with HTTP ${response.status}: ${error.message}`,
+                    };
+                }
+            }
+
+            return {
+                data: null,
+                rawBody,
+                isJson: false,
+                errorMessage: `The API returned ${contentType || "non-JSON content"} with HTTP ${response.status}. Response starts with: ${rawBody.slice(0, 200)}`,
+            };
+        }
+
+        function getApiErrorMessage(response, parsedResponse) {
+            const data = parsedResponse.data;
+
+            if (data && typeof data === "object") {
+                const detail = data.detail || data.message || data.error;
+
+                if (typeof detail === "string") {
+                    return detail;
+                }
+
+                if (detail) {
+                    return JSON.stringify(detail);
+                }
+            }
+
+            return parsedResponse.errorMessage || `Request failed with HTTP ${response.status}`;
+        }
+
+        function normalizeBaseUrl(baseUrl) {
+            return baseUrl.replace(/\/$/, "");
+        }
+
+        function getApiCandidates() {
+            const candidates = [];
+            const currentOrigin = window.location.origin;
+
+            if (currentOrigin && currentOrigin !== "null") {
+                candidates.push(currentOrigin);
+            }
+
+            candidates.push("http://127.0.0.1:8000");
+            candidates.push("http://localhost:8000");
+
+            return [...new Set(candidates.map(normalizeBaseUrl))];
+        }
+
+        function isFastApiHealthResponse(data) {
+            return Boolean(
+                data
+                && typeof data === "object"
+                && data.project === "Customer Churn Prediction ML API"
+                && data.api_status
+            );
+        }
+
+        async function fetchFromApi(path, options = {}) {
+            if (!apiBaseUrl) {
+                await fetchHealth();
+            }
+
+            if (!apiBaseUrl) {
+                throw new Error("FastAPI server not found. Start it with: uvicorn app.main:app --reload and open http://127.0.0.1:8000/ui");
+            }
+
+            return fetch(`${apiBaseUrl}${path}`, options);
+        }
+
+        function getPayloadFromForm() {
+            const formData = new FormData(form);
+            const payload = {};
+
+            for (const [key, value] of formData.entries()) {
+                payload[key] = numericFields.has(key) ? Number(value) : value;
+            }
+
+            return payload;
+        }
+
+        function updateRequestPreview() {
+            requestJson.textContent = formatJson(getPayloadFromForm());
+        }
+
+        function setFormPayload(payload) {
+            for (const [key, value] of Object.entries(payload)) {
+                const field = form.elements[key];
+                if (field) {
+                    field.value = value;
+                }
+            }
+            updateRequestPreview();
+        }
+
+        function updateResult(data) {
+            const percent = Math.round(data.probability * 1000) / 10;
+            probability.textContent = `${percent}%`;
+            risk.textContent = data.risk_level;
+            resultNote.textContent = data.prediction === "Churn"
+                ? "Model output: churn predicted. Consider retention action."
+                : "Model output: no churn predicted. Continue regular engagement.";
+
+            resultCard.className = "result-card";
+            if (data.risk_level === "Low Risk") {
+                resultCard.classList.add("low");
+            } else if (data.risk_level === "Medium Risk") {
+                resultCard.classList.add("medium");
+            } else if (data.risk_level === "High Risk") {
+                resultCard.classList.add("high");
+            }
+        }
+
+        function clearResult() {
+            hideMessage();
+            responseJson.textContent = "No response yet.";
+            probability.textContent = "--%";
+            risk.textContent = "No result";
+            resultNote.textContent = "Submit the form to call the prediction API.";
+            resultCard.className = "result-card";
+        }
+
+        async function fetchHealth() {
+            const statusElement = document.getElementById("api-status");
+            const versionElement = document.getElementById("api-version");
+            const artifactElement = document.getElementById("artifact-status");
+
+            statusElement.textContent = "Checking...";
+            versionElement.textContent = "-";
+            artifactElement.textContent = "Checking model artifacts...";
+
+            try {
+                const errors = [];
+                let response = null;
+                let parsedResponse = null;
+
+                for (const candidate of getApiCandidates()) {
+                    try {
+                        response = await fetch(`${candidate}/`);
+                        parsedResponse = await parseApiResponse(response);
+
+                        if (response.ok && isFastApiHealthResponse(parsedResponse.data)) {
+                            apiBaseUrl = candidate;
+                            break;
+                        }
+
+                        errors.push(`${candidate}: ${getApiErrorMessage(response, parsedResponse)}`);
+                    } catch (error) {
+                        errors.push(`${candidate}: ${error.message}`);
+                    }
+                }
+
+                if (!apiBaseUrl || !parsedResponse?.data) {
+                    throw new Error(`FastAPI server not found. Tried: ${errors.join(" | ")}. Start with: uvicorn app.main:app --reload`);
+                }
+
+                const data = parsedResponse.data;
+
+                statusElement.textContent = data.api_status || "unknown";
+                versionElement.textContent = data.version || "-";
+                artifactElement.textContent = `API: ${apiBaseUrl}\nModel: ${data.model_artifact || "unknown"}\nPreprocessor: ${data.preprocessor_artifact || "unknown"}`;
+            } catch (error) {
+                statusElement.textContent = "unreachable";
+                artifactElement.textContent = error.message;
+            }
+        }
+
+        form.addEventListener("input", updateRequestPreview);
+        form.addEventListener("change", updateRequestPreview);
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            hideMessage();
+
+            const payload = getPayloadFromForm();
+            requestJson.textContent = formatJson(payload);
+            responseJson.textContent = "Calling POST /predict ...";
+            submitButton.textContent = "Predicting...";
+            form.classList.add("loading");
+
+            try {
+                const response = await fetchFromApi("/predict", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(payload),
+                });
+
+                const parsedResponse = await parseApiResponse(response);
+                const data = parsedResponse.data;
+                responseJson.textContent = data
+                    ? formatJson(data)
+                    : parsedResponse.rawBody || parsedResponse.errorMessage;
+
+                if (!response.ok || !data) {
+                    throw new Error(getApiErrorMessage(response, parsedResponse));
+                }
+
+                if (typeof data.probability !== "number" || !data.prediction || !data.risk_level) {
+                    throw new Error("The API response did not include prediction, probability, and risk_level fields.");
+                }
+
+                updateResult(data);
+                showMessage("success", "Prediction completed successfully.");
+            } catch (error) {
+                showMessage("error", `Prediction failed: ${error.message}`);
+            } finally {
+                submitButton.textContent = "Predict Customer Churn";
+                form.classList.remove("loading");
+            }
+        });
+
+        document.getElementById("sample-button").addEventListener("click", () => {
+            setFormPayload(samplePayload);
+            clearResult();
+        });
+
+        document.getElementById("clear-button").addEventListener("click", clearResult);
+        document.getElementById("refresh-health").addEventListener("click", fetchHealth);
+
+        setFormPayload(samplePayload);
+        fetchHealth();
+    </script>
+</body>
+</html>

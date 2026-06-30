@@ -1,5 +1,9 @@
-import os
 import pickle
+import os
+import sys
+
+from src.exception import CustomException
+
 
 def save_object(file_path, obj):
 
@@ -10,15 +14,15 @@ def save_object(file_path, obj):
     with open(file_path, "wb") as file_obj:
         pickle.dump(obj, file_obj)
 
-from sklearn.metrics import (
-    accuracy_score,
-    precision_score,
-    recall_score,
-    f1_score,
-    roc_auc_score
-)
 
 def evaluate_model(X_train, y_train, X_test, y_test, models):
+
+    from sklearn.metrics import (
+        accuracy_score,
+        precision_score,
+        recall_score,
+        f1_score
+    )
 
     report = {}
 
@@ -44,3 +48,15 @@ def evaluate_model(X_train, y_train, X_test, y_test, models):
         }
 
     return report
+
+def load_object(file_path):
+
+    try:
+
+        with open(file_path, "rb") as file_obj:
+
+            return pickle.load(file_obj)
+
+    except Exception as e:
+
+        raise CustomException(e, sys)
