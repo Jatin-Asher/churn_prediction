@@ -309,3 +309,28 @@ Traceback (most recent call last):
     for _, _, transformer in getattr(estimator, "_iter", lambda: [])():
                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 TypeError: ColumnTransformer._iter() missing 4 required positional arguments: 'fitted', 'column_as_labels', 'skip_drop', and 'skip_empty_columns'
+2026-06-30 15:38:38,703 - app.main - INFO - Starting Customer Churn Prediction API
+2026-06-30 15:38:38,703 - app.main - INFO - Project root resolved to: C:\Users\Asus\Desktop\churn_prediction
+2026-06-30 15:54:20,988 - app.routes - INFO - Incoming prediction request: {'gender': 'Female', 'senior_citizen': 0, 'partner': 'Yes', 'dependents': 'No', 'tenure_months': 12, 'phone_service': 'Yes', 'multiple_lines': 'No', 'internet_service': 'Fiber optic', 'online_security': 'No', 'online_backup': 'Yes', 'device_protection': 'No', 'tech_support': 'No', 'streaming_tv': 'Yes', 'streaming_movies': 'Yes', 'contract': 'Month-to-month', 'paperless_billing': 'Yes', 'payment_method': 'Electronic check', 'monthly_charges': 85.7, 'total_charges': 1028.4, 'cltv': 3200.0}
+2026-06-30 15:54:20,988 - app.routes - INFO - Checking model artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\model.pkl
+2026-06-30 15:54:20,988 - app.routes - INFO - Checking preprocessor artifact path: C:\Users\Asus\Desktop\churn_prediction\artifacts\preprocessor.pkl
+2026-06-30 15:54:20,989 - app.routes - INFO - Required artifacts found
+2026-06-30 15:54:21,593 - src.pipeline.prediction_pipeline - INFO - Created CustomData DataFrame columns: ['Gender', 'Senior Citizen', 'Partner', 'Dependents', 'Tenure Months', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method', 'Monthly Charges', 'Total Charges', 'CLTV']
+2026-06-30 15:54:21,593 - src.pipeline.prediction_pipeline - INFO - Created CustomData DataFrame shape: (1, 20)
+2026-06-30 15:54:21,593 - app.routes - INFO - Input DataFrame columns: ['Gender', 'Senior Citizen', 'Partner', 'Dependents', 'Tenure Months', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method', 'Monthly Charges', 'Total Charges', 'CLTV']
+2026-06-30 15:54:21,594 - app.routes - INFO - Input DataFrame shape: (1, 20)
+2026-06-30 15:54:21,594 - src.pipeline.prediction_pipeline - INFO - Starting prediction pipeline
+2026-06-30 15:54:21,594 - src.pipeline.prediction_pipeline - INFO - Prediction input DataFrame columns: ['Gender', 'Senior Citizen', 'Partner', 'Dependents', 'Tenure Months', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method', 'Monthly Charges', 'Total Charges', 'CLTV']
+2026-06-30 15:54:21,594 - src.pipeline.prediction_pipeline - INFO - Prediction input DataFrame shape: (1, 20)
+2026-06-30 15:54:21,594 - src.pipeline.prediction_pipeline - INFO - Loading model from: C:\Users\Asus\Desktop\churn_prediction\artifacts\model.pkl
+2026-06-30 15:54:23,170 - src.pipeline.prediction_pipeline - INFO - Model loaded successfully: RandomForestClassifier
+2026-06-30 15:54:23,170 - src.pipeline.prediction_pipeline - INFO - Loading preprocessor from: C:\Users\Asus\Desktop\churn_prediction\artifacts\preprocessor.pkl
+2026-06-30 15:54:23,175 - src.pipeline.prediction_pipeline - WARNING - Patched 2 SimpleImputer object(s) for scikit-learn artifact compatibility
+2026-06-30 15:54:23,175 - src.pipeline.prediction_pipeline - INFO - Preprocessor loaded successfully: ColumnTransformer
+2026-06-30 15:54:23,176 - src.pipeline.prediction_pipeline - INFO - Preprocessor required raw columns: ['Tenure Months', 'Monthly Charges', 'Total Charges', 'CLTV', 'Gender', 'Partner', 'Dependents', 'Phone Service', 'Multiple Lines', 'Internet Service', 'Online Security', 'Online Backup', 'Device Protection', 'Tech Support', 'Streaming TV', 'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method']
+2026-06-30 15:54:23,176 - src.pipeline.prediction_pipeline - WARNING - Input DataFrame contains extra column(s) not used by preprocessor: ['Senior Citizen']
+2026-06-30 15:54:23,178 - src.pipeline.prediction_pipeline - INFO - Input DataFrame reordered to expected columns
+2026-06-30 15:54:23,214 - src.pipeline.prediction_pipeline - INFO - Transformed feature matrix shape: (1, 45)
+2026-06-30 15:54:23,227 - src.pipeline.prediction_pipeline - INFO - Prediction result: [1]
+2026-06-30 15:54:23,235 - src.pipeline.prediction_pipeline - INFO - Probability result: [0.8225872]
+2026-06-30 15:54:23,236 - app.routes - INFO - Prediction completed successfully: raw_prediction=1, prediction=Churn, probability=0.8226, risk=High Risk
